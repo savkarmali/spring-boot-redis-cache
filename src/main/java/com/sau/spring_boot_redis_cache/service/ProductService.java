@@ -9,6 +9,8 @@ import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class ProductService {
 
@@ -57,6 +59,6 @@ public class ProductService {
 
     @CacheEvict(value = PRODUCT_CACHE, key = "#productId")
     public void deleteProduct(Long productId) {
-        Product product = productRepository.findById(productId);
+        Optional<Product> product = productRepository.findById(productId);
     }
 }
